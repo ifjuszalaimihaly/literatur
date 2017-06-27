@@ -37,11 +37,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post;
-        $post->id($request->id);
-        $post->title($request->title);
-        $post->content($request->content);
-        $post->city($post->city);
-        
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->city = $request->city;
+        $post->written_at = $request->written_at;
+        $post->save();
+
+        return redirect()->route("posts.create");
+
     }
 
     /**
@@ -52,7 +55,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        
     }
 
     /**
