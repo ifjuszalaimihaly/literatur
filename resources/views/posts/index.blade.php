@@ -12,7 +12,7 @@
 		<legend>
 		<div class="row">
 			<div class="col-md-5">
-				{{ $post->city }}, {{ $post->created_at }}
+				{{ $post->city }}, {{ $post->written_at }}
 
 			</div>
 			<div class="col-md-2">
@@ -22,11 +22,11 @@
 				<a class="btn btn-success btn-block" href="{{ route('posts.edit', $post->id) }}">Szerkesztés</a>
 			</div>
 			<div class="col-md-2">
-				
-				{!! Form::open(["route" => ["posts.destroy", $post->id], "method" => "DELETE"]) !!}
-					{!! Form::submit('Törlés', ['class' => 'btn btn-danger btn-block']) !!}
-					{!! Form::close() !!}				
-					
+				<form method='POST' action="{{route('posts.destroy', $post->id)}}">
+					{{ csrf_field() }}
+					{{ method_field('DELETE') }}
+					<button type="submit" class="btn btn-danger btn-block">Törlés</button>					
+				</form>					
 			</div>
 		</div>		
 		</legend>

@@ -43,7 +43,7 @@ class PostController extends Controller
         $post->written_at = $request->written_at;
         $post->save();
 
-        return redirect()->route("posts.create");
+        return redirect()->route("posts.show", $post->id);
 
     }
 
@@ -67,7 +67,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        dd("edit");
+        $post = Post::find($id);
+        return view("posts.edit")->withPost($post);
     }
 
     /**
@@ -77,9 +78,15 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request,$id)
     {
-        //
+      $post=Post::find($id);
+      $post->title=$request->title;
+      $post->content=$request->content;
+      $post->city=$request->city;
+      $post->written_at=$request->written_at;
+      $post->save();
+      return redirect()->route("posts.show", $post->id);
     }
 
     /**
