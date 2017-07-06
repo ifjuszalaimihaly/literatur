@@ -13,10 +13,9 @@ use App\Post;
 |
 */
 
-Route::get('/', function () {
-	$posts = Post::get();
-    return view('layouts.welcome')->withPosts($posts);
-});
+Route::get('/','PagesController@index');
+Route::get('singlepost/{slug}',['uses' => 'PagesController@singlepost','as' => 'singlepost']);
+
 Route::resource('posts','PostController');
 Auth::routes();
 
