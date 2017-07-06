@@ -1,10 +1,9 @@
-@extends('app')
+@extends("layouts.app")
 @section('stylesheet')
 
 <link rel="stylesheet" href="{{ URL::to('/') }}/css/styles.css" />
 @endsection
 @section('content')
-	<a href="{{ route('posts.create') }}" class="btn btn-primary">Új bejegyzés</a>
 	@foreach($posts as $post)
 		<h2>{{ $post->title }}</h2>
 		<p>

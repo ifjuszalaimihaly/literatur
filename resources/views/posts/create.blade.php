@@ -1,4 +1,4 @@
-@extends('app')
+@extends("layouts.app")
 @section('stylesheet')
 
 <link rel="stylesheet" href="{{ URL::to('/') }}/css/bootstrap-datepicker.min.css" />
