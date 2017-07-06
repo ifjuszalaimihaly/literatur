@@ -9,19 +9,19 @@
 	{{ csrf_field() }}
 	<div class="form-group">
 		<label for="title">Cím</label>
-		<input type="text" class="form-control" id="title" name="title" placeholder="Cím">
+		<input type="text" class="form-control" id="title" name="title" placeholder="Cím" required="required">
 	</div>
 	<div class="form-group">
 		<label for="exampleInputPassword1">Tartalom</label>
-		<textarea class="form-control" id="content" name="content"></textarea>
+		<textarea class="form-control" id="content" name="content" required="required"></textarea>
 	</div>
 	<div class="form-group">
 		<label for="title">Keletkezési hely</label>
-		<input type="text" class="form-control" id="city" placeholder="Keletkezési hely" name="city">
+		<input type="text" class="form-control" id="city" placeholder="Keletkezési hely" name="city" required="required">
 	</div>
 	<div class="form-group">
 		<label for="datepicker">Keletkezési dátum</label>
-		 <input type="text" class="form-control" id="datepicker" name="written_at">
+		 <input type="text" class="form-control" id="datepicker" name="written_at" required="required">
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 	 <fieldset>
@@ -33,7 +33,7 @@
 <script>
 	$("#datepicker").datepicker({
 		format: "yyyy-mm-dd",
-		language: "hu"
+		language: "hu",
 	});
 </script>
 @endsection

@@ -47,6 +47,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->city = $request->city;
         $post->written_at = $request->written_at;
+        $post->slug = $this->createslug($post->title,$post->written_at);
         $post->save();
 
         return redirect()->route("posts.show", $post->id);
@@ -107,4 +108,13 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route("posts.index");
     }
+
+    private function createslug($title, $date)
+    {
+       $hu=array('/é/','/É/','/á/','/Á/','/ó/','/Ó/','/ö/','/Ö/','/ő/','/Ő/','/ú/','/Ú/','/ű/','/Ű/','/ü/','/Ü/','/í/','/Í/','/ /');
+       $en= array('e','E','a','A','o','O','o','O','o','O','u','U','u','U','u','U','i','I','-');
+       $r=preg_replace($hu,$en,$title);
+       $r=strtolower($r);
+       return $date."-".$r;
+   }
 }
