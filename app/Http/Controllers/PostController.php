@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -31,7 +32,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');        
+        $categories = Category::all();
+        return view('posts.create')->withCategories($categories);        
     }
 
     /**
@@ -48,6 +50,7 @@ class PostController extends Controller
         $post->city = $request->city;
         $post->written_at = $request->written_at;
         $post->slug = $this->createslug($post->title,$post->written_at);
+        $post->category_id = $request->category_id;
         $post->save();
 
         return redirect()->route("posts.show", $post->id);
@@ -109,11 +112,16 @@ class PostController extends Controller
         return redirect()->route("posts.index");
     }
 
-    private function createslug($title, $date)
+    private function createslug($title, $date)//make it nicer
     {
-       $hu=array('/é/','/É/','/á/','/Á/','/ó/','/Ó/','/ö/','/Ö/','/ő/','/Ő/','/ú/','/Ú/','/ű/','/Ű/','/ü/','/Ü/','/í/','/Í/','/ /');
+       $hu=array('/é/','/É/','/á/','/Á/','/ó/','/Ó/','/ö/','/Ö/','/ő/','/Ő/','/ú/','/Ú/','/ű/','/Ű/','/ü/','/Ü/','/í/','/Í/','/ /',);
        $en= array('e','E','a','A','o','O','o','O','o','O','u','U','u','U','u','U','i','I','-');
        $r=preg_replace($hu,$en,$title);
+       $r=str_replace('?', '', $r);
+       $r=str_replace(',', '', $r);
+       $r=str_replace(';', '', $r);
+       $r=str_replace('!', '', $r);
+       $r=str_replace('.', '', $r);
        $r=strtolower($r);
        return $date."-".$r;
    }

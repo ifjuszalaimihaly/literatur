@@ -12,6 +12,14 @@
 		<input type="text" class="form-control" id="title" name="title" placeholder="Cím" required="required">
 	</div>
 	<div class="form-group">
+		<label for="title">Ketegória</label>
+		<select id="category_id" name="category_id" class="form-control">
+			@foreach($categories as $category)
+				<option value="{{ $category->id }}">{{ $category->name }}</option>
+			@endforeach
+		</select>
+	</div>
+	<div class="form-group">
 		<label for="exampleInputPassword1">Tartalom</label>
 		<textarea class="form-control" id="content" name="content" required="required"></textarea>
 	</div>

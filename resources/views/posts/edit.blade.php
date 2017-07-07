@@ -10,7 +10,7 @@
 	{{ method_field('PUT') }}
 	<div class="form-group">
 		<label for="title">Cím</label>
-		<input type="text" class="form-control" id="title" name="title" placeholder="Cím" value="{{ $post->title }}" required="required">
+		<input type="text" class="form-control" id="title" name="title" placeholder="Cím" value="{{ $post->title }}" disabled="disabled">
 	</div>
 	<div class="form-group">
 		<label for="exampleInputPassword1">Tartalom</label>
@@ -18,11 +18,11 @@
 	</div>
 	<div class="form-group">
 		<label for="title">Keletkezési hely</label>
-		<input type="text" class="form-control" id="city" placeholder="Keletkezési hely" name="city" value="{{ $post->city }}" required="required">
+		<input type="text" class="form-control" id="city" placeholder="Keletkezési hely" name="city" value="{{ $post->city }}" disabled="disabled">
 	</div>
 	<div class="form-group">
 		<label for="datepicker">Keletkezési dátum</label>
-		 <input type="text" class="form-control" id="datepicker" name="written_at" value="{{ $post->written_at }}" required="required">
+		 <input type="text" class="form-control" id="datepicker" name="written_at" value="{{ $post->written_at }}" disabled="disabled">
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 	 <fieldset>
