@@ -12,16 +12,16 @@ class PagesController extends Controller
     public function index()
     {
     	$posts = Post::orderBy('updated_at','desc')->paginate(10);
-    	return view('layouts.welcome')->withPosts($posts);
+    	return view('pages.welcome')->withPosts($posts);
     }
 
     public function singlepost($slug){
     	$post = Post::where('slug', '=', $slug)->first();
-    	return view('layouts.singlepost')->withPost($post);
+    	return view('pages.singlepost')->withPost($post);
     }
 
     public function contact(){
-      return view('layouts.contact');
+      return view('pages.contact');
     }
 
     public function postcontact(Request $request){
