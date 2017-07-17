@@ -15,7 +15,8 @@ use App\Post;
 
 Route::get('/','PagesController@index');
 Route::get('singlepost/{slug}',['uses' => 'PagesController@singlepost','as' => 'singlepost']);
+Route::get('contact','PagesController@contact');
+Route::post('contact','PagesController@postcontact');
 
 Route::resource('posts','PostController');
 Auth::routes();
-
